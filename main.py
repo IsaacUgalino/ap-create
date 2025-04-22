@@ -18,10 +18,18 @@ while running:
             if event.type == pygame.K_w:
                 for point in triangle_vertices:
                     point[1] -= 1
+            if event.type == pygame.K_s:
                 for point in triangle_vertices: 
                     point[1] += 1
+            if event.type == pygame.K_a:
+                for point in triangle_vertices:
+                    point[0] += 1
+            if event.type == pygame.K_d:
+                for point in triangle_vertices:
+                    point[0] += 1
+                
     
     screen.fill((255, 255, 255))
     pygame.draw.polygon(screen, (255, 255, 255), triangle_vertices)
-    pygame.display.flip
+    pygame.display.flip()
 pygame.quit()
