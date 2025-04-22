@@ -21,6 +21,8 @@ clock = pygame.time.Clock()
 run = True
 while run:
     for event in pygame.event.get():
+        screen .fill((0,0,0))
+        
         if event.type == pygame.QUIT:
             run = False
 
@@ -29,7 +31,7 @@ while run:
     if keys[pygame.K_w]: #move up
         player_rect.w -= player_speed
     if keys[pygame.K_s]:
-        [player_rect.s] += player_speed
+        player_rect.s += player_speed
     if keys[pygame.K_a]:
         player_rect.a -= player_speed
     if keys[pygame.K_d]:
