@@ -1,38 +1,27 @@
 import pygame
-import time
-import sys
+pygame.init()
 
-background_colour = (0,0,0)
-(width, height) = (500, 500)
-screen = pygame.display.set_mode((width, height))
+screen = pygame.display.set_mode([500, 500])
 pygame.display.set_caption("Asteroids")
-screen.fill(background_colour)
 
-pygame.display.flip()
+pointA = [100, 100]
+pointB = [150,100]
+pointC = [125, 150]
+triangle_vertices = [pointA, pointB, pointC]
 
-#player icon
-player_image = pygame.image.load("spaceship.png").convert_alpha() #convert alpha makes image transparent 
-player_rect = player_image.get_rect() #gets rectangle area of image
-player_rect.center = (width // 2, height // 2) #centers box on screen
-player_speed = 6
-
-clock = pygame.time.Clock()
-
-run = True
-while run:
+running = True
+while running:
     for event in pygame.event.get():
-        screen .fill((0,0,0))
-        
         if event.type == pygame.QUIT:
             run = False
-
-    #Key controls
-    keys = pygame.get_pressed()
-    if keys[pygame.K_w]: #move up
-        player_rect.w -= player_speed
-    if keys[pygame.K_s]:
-        player_rect.s += player_speed
-    if keys[pygame.K_a]:
-        player_rect.a -= player_speed
-    if keys[pygame.K_d]:
-        player_rect.d += player_speed
+        if event.type == pygame.KEYDOWN:
+            if event.type == pygame.K_w:
+                for point in triangle_vertices:
+                    point[1] -= 1
+                for point in triangle_vertices: 
+                    point[1] += 1
+    
+    screen.fill((255, 255, 255))
+    pygame.draw.polygon(screen, (255, 255, 255), triangle_vertices)
+    pygame.display.flip
+pygame.quit()
